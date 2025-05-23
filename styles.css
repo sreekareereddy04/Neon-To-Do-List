@@ -1,0 +1,394 @@
+:root {
+    --primary-color: #0ff0fc;
+    --secondary-color: #ff2a6d;
+    --tertiary-color: #ffcc00;
+    --bg-color: #050a1a;
+    --text-color: #d1f7ff;
+    --card-bg: rgba(5, 10, 26, 0.7);
+    --shadow: 0 0 10px var(--primary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background: linear-gradient(-45deg, #050a1a, #0a1129, #0a1a3a, #0a224a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(5, 10, 26, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientText 5s linear infinite;
+}
+
+@keyframes gradientText {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+input, textarea, select {
+    background-color: var(--card-bg);
+    border: 1px solid;
+    border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) 1;
+    color: var(--text-color);
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--secondary-color);
+    border-image: linear-gradient(45deg, var(--secondary-color), var(--tertiary-color)) 1;
+}
+
+button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% auto;
+    color: var(--bg-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(15, 240, 252, 0.5);
+    animation: gradientButton 5s ease infinite;
+}
+
+@keyframes gradientButton {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task-card {
+    background-color: var(--card-bg);
+    border: 1px solid;
+    border-image: linear-gradient(to right, var(--primary-color), var(--secondary-color)) 1;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(15, 240, 252, 0.3);
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.task-card.completed {
+    opacity: 0.7;
+    border-image: linear-gradient(to right, var(--secondary-color), #00ff88) 1;
+}
+
+.task-card.completed .task-title {
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+
+.task-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.task-description {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.task-due {
+    font-size: 0.9rem;
+    color: #a1d8e6;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid;
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.complete-btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.complete-btn:hover {
+    background-color: rgba(15, 240, 252, 0.1);
+    box-shadow: 0 0 8px rgba(15, 240, 252, 0.3);
+}
+
+.edit-btn {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+.edit-btn:hover {
+    background-color: rgba(255, 204, 0, 0.1);
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+}
+
+.delete-btn {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 42, 109, 0.1);
+    box-shadow: 0 0 8px rgba(255, 42, 109, 0.3);
+}
+
+.filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(15, 240, 252, 0.3);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-color);
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(15, 240, 252, 0.5);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(209, 247, 255, 0.5);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: rgba(15, 240, 252, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+.task-form {
+    display: none;
+    background-color: var(--card-bg);
+    border: 1px solid;
+    border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) 1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.task-form.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.cancel-btn:hover {
+    background-color: rgba(255, 42, 109, 0.1);
+}
+
+.priority-high {
+    border-left: 3px solid var(--secondary-color);
+}
+
+.priority-medium {
+    border-left: 3px solid var(--tertiary-color);
+}
+
+.priority-low {
+    border-left: 3px solid var(--primary-color);
+}
+
+.task-priority {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, rgba(255, 42, 109, 0.2), rgba(15, 240, 252, 0.2));
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+    }
+    
+    .filter-container {
+        justify-content: center;
+    }
+    
+    .task-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        justify-content: center;
+    }
+}

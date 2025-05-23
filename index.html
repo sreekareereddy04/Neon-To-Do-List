@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My To-Do</h1>
+            <p>Organize your tasks with style</p>
+        </header>
+        
+        <div class="input-container">
+            <input type="text" id="new-task-input" placeholder="Add a new task..." autofocus>
+            <button id="add-task-btn"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        
+        <div id="task-form" class="task-form">
+            <div class="form-row">
+                <input type="text" id="edit-task-title" placeholder="Task title">
+            </div>
+            <div class="form-row">
+                <textarea id="edit-task-description" placeholder="Task description"></textarea>
+            </div>
+            <div class="form-row">
+                <input type="datetime-local" id="edit-task-due">
+            </div>
+            <div class="form-row">
+                <select id="edit-task-priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button id="cancel-edit-btn" class="cancel-btn">Cancel</button>
+                <button id="save-task-btn">Save Task</button>
+            </div>
+        </div>
+        
+        <div id="task-list" class="task-list">
+            <!-- Tasks will be added here dynamically -->
+            <div class="empty-state">
+                <i class="fas fa-tasks"></i>
+                <h3>No tasks yet</h3>
+                <p>Add your first task to get started</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
